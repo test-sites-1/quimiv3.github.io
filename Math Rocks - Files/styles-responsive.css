@@ -1,0 +1,91 @@
+/* Ajusta las fuentes para dispositivos móviles */
+@media (max-width: 767px) {
+    .html-responsive {
+      font-size: 14px;
+    }
+  }
+  
+  /* Ajusta las fuentes para tablets */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .html-responsive {
+      font-size: 16px;
+    }
+  }
+  
+  /* Ajusta las fuentes para pantallas grandes */
+  @media (min-width: 1025px) {
+    .html-responsive {
+      font-size: 18px;
+    }
+  }
+  
+  /* Ajusta el diseño de la sección de cursos */
+  @media (max-width: 767px) {
+    #cursos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .course-banner {
+      width: 45%;
+      margin: 10px;
+    }
+  }
+  
+  /* Ajusta el diseño de la sección de eventos */
+  @media (max-width: 767px) {
+    #eventos {
+      text-align: center;
+    }
+  
+    .event-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+  
+    .card {
+      width: 300px;
+      height: 400px;
+    }
+  }
+  
+  /* Ajusta el diseño de la sección de contacto */
+  @media (max-width: 767px) {
+    #contacto {
+      text-align: center;
+    }
+  
+    .contact-form {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+  }
+
+  .card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .card p {
+    margin: 0;
+    font-size: 16px;
+  }

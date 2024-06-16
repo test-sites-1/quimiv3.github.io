@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./Math Rocks - Files/mainResponsive.css">
+  <link rel="icon" href="./quimilogo.png">
+    <title>Química IV</title>
+     <!-- Favicon -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Math Rocks - Files/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <!-- Estilos personalizados para las secciones con diseño ondulado y la barra de navegación -->
+    <style>
+        /* Diseño de la barra de navegación */
+        .navigation-bar {
+            background-color: rgba(74, 85, 104, 0.5); /* Color de fondo */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra */
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        /* CSS */
+.navigation-bar.reduced {
+    height: 60px; /* Altura reducida */
+    padding: 0 20px; /* Padding ajustado */
+}
+
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            width: 80px; /* Ajusta el tamaño del logo/icono según lo necesites */
+            margin-right: 10px;
+        }
+
+        .navigation-bar a {
+            color: rgb(252, 248, 2);
+            text-decoration: none;
+            padding: 14px 16px;
+            text-align: center;
+        }
+
+        /* Cambiar el color de fondo al pasar el mouse */
+        .navigation-bar a:hover {
+            background-color: #718096;
+        }
+
+        /* Barra de desplazamiento personalizada */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e06f6f;
+        }
+
+        /* Diseño de la ola roja en el footer */
+        #contacto {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #contacto::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url('red-wave.svg'); /* Reemplaza 'red-wave.svg' con la imagen SVG de la ola roja */
+            background-repeat: repeat-x;
+            z-index: -1;
+        }
+    </style>
+
+    <style>
+        /* Animación para el efecto de empuje */
+@keyframes push {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Animación para el efecto de glowing en los bordes */
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* Aplicar efecto de empuje y glowing a los recuadros */
+.border-effect {
+  animation: push 0.5s ease-in-out infinite alternate, glowing 1s ease-in-out infinite alternate;
+}
+
+    </style>
+
+  <!-- JavaScript para el menú hamburguesa -->
+    <script>
+        function toggleMenu() {
+            const hiddenMenu = document.getElementById("hiddenMenu");
+            if (hiddenMenu.style.display === "block") {
+                hiddenMenu.style.display = "none";
+            } else {
+                hiddenMenu.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<!-- Estilos personalizados para las secciones con diseño ondulado y la barra de navegación -->
+<style>
+    /* Tus estilos personalizados aquí */
+</style>
+
+<!-- Navegación -->
+<div class="navigation-bar" id="navigationBar">
+    <div class="logo">
+        <a href="https://cecyt3.ipn.mx" target="_blank">
+            <img src="./quimilogo.png" alt="Logo del menú"> 
+        </a>
+    </div>
+
+<!-- Botón de hamburguesa -->
+<button id="toggleMenu" class="md:hidden block" onclick="toggleMenu()">
+    <svg class="w-6 h-6" fill="none" stroke="red" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+    </svg>
+</button>
+
+    <!-- Sección de menú oculto -->
+    <div id="hiddenMenu" class="hidden md:block">
+        <a href="#inicio" class="block md:inline-block">𝙸𝚗𝚒𝚌𝚒𝚘</a>
+        <a href="#cursos" class="block md:inline-block">𝙲𝚞𝚛𝚜𝚘𝚜</a>
+        <a href="#galeria" class="block md:inline-block">𝙶𝚊𝚕𝚎𝚛í𝚊</a>
+        <a href="#contacto" class="block md:inline-block">𝙲𝚘𝚗𝚝𝚊𝚌𝚝𝚘</a>
+    </div>
+</div>
+
+</div>
+
+    <!-- Resto del contenido -->
+<style>
+
+    .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.video-bg {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    object-fit: cover;
+}
+
+</style>
+<!-- Banner Principal -->
+<section id="inicio" class="bg-cover bg-center py-40 text-center" style="background-image: url('banner.jpg');">
+    <section class="imagesNotPage">
+ <style>
+   <style>
+    .imagesNotPage {
+        position: absolute;
+        top: 20%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none; /* Esta propiedad evita que las imágenes interfieran con los elementos de abajo */
+    }
+    .alienImg,
+    .astronautOvniImg {
+        position: absolute;
+        pointer-events: none; /* Esta propiedad evita que las imágenes interfieran con los elementos de abajo */
+    }
+
+    /* Ajusta las posiciones de las imágenes según necesites */
+  
+    .alienImg {
+        top: 20%;
+        left: 10%;
+        width: 9%;
+    }
+
+</style>
+
+        <img src="./Math Rocks - Files/moon.png" alt="Moon image" class="moonImg">
+        <img src="./Math Rocks - Files/alien.png" alt="Alien image" class="alienImg">
+    </section>
+    <div class="video-container">
+        <video autoplay loop muted class="video-bg">
+            <source src="./stars.mp4" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+        </video>
+    </div>
+    <div class="container mx-auto relative z-10">
+      <br></br>
+        <h1 class="text-5xl font-extrabold text-white">CECyT 3 - Química</h1>
+        <br></br>
+   
+        <p class="text-2xl font-extrabold text-white">Tú conoces el negocio y yo conozco la química...</p> 
+        <br></br>
+    
+        <style>
+            .button-style {
+              text-decoration: none;
+              position: relative;
+              border: none;
+              font-size: 14px;
+              font-family: inherit;
+              cursor: pointer;
+              color: #fff;
+              width: 9em;
+              height: 3em;
+              line-height: 2em;
+              text-align: center;
+              background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+              background-size: 300%;
+              border-radius: 30px;
+              z-index: 1;
+            }
+            
+            .button-style:hover {
+              animation: ani 8s linear infinite;
+              border: none;
+            }
+            
+            @keyframes ani {
+              0% {
+                background-position: 0%;
+              }
+            
+              100% {
+                background-position: 400%;
+              }
+            }
+            
+            .button-style:before {
+              content: "";
+              position: absolute;
+              top: -5px;
+              left: -5px;
+              right: -5px;
+              bottom: -5px;
+              z-index: -1;
+              background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+              background-size: 400%;
+              border-radius: 35px;
+              transition: 1s;
+            }
+            
+            .button-style:hover::before {
+              filter: blur(20px);
+            }
+            
+            .button-style:active {
+              background: linear-gradient(32deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            }
+            </style>
+            
+            <button class="button-style" onclick="window.location.href='#cursos'">DESCUBRE MÁS</button>
+   
+
+    </div>
+</section>
+
+
+
+
+<style>
+  /* Estilos para la sección de frase aleatoria */
+  .quote-section {
+    background-color: black;
+      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+      color: white;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+      border-radius: 10px;
+      margin-bottom: 20px;
+  }
+
+  .quote {
+      font-style: italic;
+  }
+</style>
+<script>
+  // JavaScript para mostrar una frase aleatoria
+  document.addEventListener("DOMContentLoaded", function() {
+      const quotes = [
+          "Di mi nombre",
+          "This, is not meth",
+          "Lo hice por mí. Me gustó. Yo era bueno en eso. Y yo estaba realmente… yo estaba vivo.",
+          "Hay oro en las calles esperando que alguien venga y lo levante.",
+          "Nunca le mientas a un mentiroso.",
+          "¿Desde cuándo los veganos comen pollo frito?",
+          "El hecho de que le dispararas a Jesse James, no te hace Jesse James.",
+          "¿Que tal si tomas esos químicos y haces algo de combustible de cohetes?, así puedes enviar una señal de luz.",
+          "No puedes confiar en un drogadicto.",
+          "Last chance to look at me Hector.",
+          "Digamos que conozco a un tipo… que conoce a otro tipo… que conoce a otro tipo.",
+          "¿El alma? No hay nada aquí, solo química.",
+          "Duermo bien.",
+      ];
+
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById('random-quote').textContent = `Frase aleatoria del día: "${randomQuote}"`;
+  });
+</script>
+</head>
+<body>
+<!-- Sección de frase aleatoria -->
+<div class="quote-section">
+  <span id="random-quote" class="quote"></span>
+
+</div>
+<br></br>
+
+    <!-- Contenido restante aquí -->
+</div>
+
+<section id="evento" class="py-24 relative">
+    <!-- Video de fondo en loop -->
+    <video autoplay loop muted class="absolute inset-0 w-full h-full object-cover">
+        <source src="./network_-_45961 (540p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="container mx-auto relative z-10">
+        <div class="fest-container">
+            <!-- Primer cuadro -->
+            <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition duration-300 border-effect">
+                <h2 class="text-4xl font-extrabold mb-12 text-center text-black">Contenidos Química IV</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow-xl transition duration-300">
+                        <a href="./newindex.html" target="_blank" class="block">
+                            <img src="./banner2.jpg" alt="Imagen" class="w-full h-70 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2 text-black">Temario química IV</h3>
+                                <p class="text-blue-500">CECyT 3</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="flex flex-col justify-center items-center text-center">
+                      <h2 class="text-4xl font-extrabold mb-10 text-black">Consulta la ruta de aprendizaje de la U.A Química IV</h2>
+                      <a href="./newindex.html" target="_blank" class="text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-300">¡Consultar aquí!</a>
+                  </div>
+                  
+                </div>
+            </div>
+
+            <br></br>
+
+      
+</body>
+</html>
+
+  <br></br>
+  
+                <!-- Efecto de brillo en el borde -->
+            </div>
+ 
+</section>
+<style>
+/* Agrega este código en tu archivo CSS o en la sección de estilos de tu página */
+
+#sobre {
+    background: linear-gradient(to bottom, #66b5ea, #ad5843); /* Cambia los colores según tu preferencia */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding-top: 100px; /* Ajusta según sea necesario */
+    padding-bottom: 100px; /* Ajusta según sea necesario */
+    color: #fff; /* Color de texto blanco para resaltar sobre el fondo */
+}
+
+/* Estilo mejorado para el contenedor principal */
+.rounded-lg {
+    border-radius: 20px; /* Esquinas redondeadas más pronunciadas */
+    padding: 30px; /* Espaciado interno */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+}
+
+/* Estilo para el título */
+.title {
+    font-size: 2.5rem; /* Tamaño de fuente más grande */
+    font-weight: 700; /* Texto más negrita */
+}
+
+/* Estilo para el subtítulo */
+.subtitle {
+    font-size: 1.5rem; /* Tamaño de fuente más grande */
+    font-weight: 500; /* Texto más negrita */
+}
+
+/* Estilo para el párrafo */
+.paragraph {
+    font-size: 1.1rem; /* Tamaño de fuente un poco más grande */
+}
+
+/* Estilo para el enlace */
+.link {
+    color: #a8d0e6; /* Color de enlace personalizado */
+    text-decoration: none; /* Quita el subrayado predeterminado */
+    transition: color 0.3s ease; /* Efecto de transición suave */
+}
+
+/* Estilo para el enlace al pasar el cursor */
+.link:hover {
+    color: #fff; /* Cambia el color al pasar el cursor */
+}
+</style>
+<section id="sobre" class="py-24 bg-white wave-top">
+    <div class="container mx-auto">
+        <h2 class="text-4xl font-extrabold mb-12 text-center">Sobre Ésta Página</h2>
+
+
+
+
+        <!-- Contenedor mejorado con un diseño más estilizado -->
+        <div class="rounded-lg overflow-hidden shadow-lg bg-gray-50 p-6 border-2 border-blue-500">
+            <div class="flex flex-col md:flex-row items-center md:justify-between">
+
+                <!-- Imagen del YouTuber -->
+                <img src="./periodic_table.jpg" alt="Imagen de Math Rocks" class="w-full md:w-1/3 mb-6 md:mb-0 rounded-lg shadow-md">
+
+                <!-- Información del YouTuber -->
+                <div class="md:w-2/3 md:pl-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-500">¡Hola! Somos el grupo 6IVX</h3>
+                    <p class="text-gray-700 mb-4">En nuestra plataforma, ofrecemos una experiencia educativa enriquecedora que te sumergirá en el fascinante mundo de la química. Desde explorar la estructura atómica hasta comprender los enlaces químicos y la nomenclatura, nuestros cursos didácticos están diseñados para guiarte a través de un viaje educativo transformador.</p>
+                    <p class="text-gray-700 mb-4">Nuestros cursos no solo te proporcionarán conocimientos teóricos sólidos, sino que también te sumergirán en experiencias prácticas que te ayudarán a aplicar estos conceptos en situaciones del mundo real. Ya sea que estés dando tus primeros pasos en la química o buscando una comprensión más profunda de los principios fundamentales, nuestros cursos están diseñados para apoyarte en cada paso.</p>
+                  </div>
+
+</section>
+
+<section id="cursos" class="py-24 bg-gradient-to-b from-blue-400 to-blue-600 relative">
+  <!-- SVG de Olas Animado -->
+  <div id="olas" class="absolute top-0 left-0 w-full z-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path fill="#E63946" fill-opacity="1" d="M0,160L60,144C120,128,240,96,360,90.7C480,85,600,107,720,133.3C840,160,960,192,1080,181.3C1200,171,1320,117,1380,90.7L1440,64L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"></path>
+      </svg>
+  </div>
+
+  <!-- Formas geométricas -->
+  <div class="absolute top-0 left-0 w-full h-full z-0">
+      <div class="absolute top-0 left-0 w-1/4 h-1/4 rounded-full bg-white opacity-10 -z-10"></div>
+      <div class="absolute top-0 right-0 w-1/2 h-1/2 rounded-full bg-white opacity-10 -z-10"></div>
+      <div class="absolute bottom-0 left-0 w-1/3 h-1/3 rounded-full bg-white opacity-10 -z-10"></div>
+      <div class="absolute bottom-0 right-0 w-2/3 h-2/3 rounded-full bg-white opacity-10 -z-10"></div>
+  </div>
+
+  <div class="container mx-auto overflow-x-auto whitespace-nowrap relative z-10">
+
+
+
+<style>
+  @keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
+/* When you change the amount of characters in the h1, you have to change 
+the with: 14ch and  steps(14, end), if there is 14 characters, put 14, 
+if there is 20 put 20 */
+.animation {
+  font: bold 200% Consolas, Monaco, monospace;
+  border-right: .1em solid black;
+  width: 13.20ch;
+  margin: 2em 2em;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-animation: typing 5s steps(13, end),
+	           blink-caret .5s step-end infinite alternate;
+}
+</style>
+
+<div class="animation">Cursos...</div>
+
+
+  
+
+<br></br>
+      
+      
+      <div class="inline-block mr-4 border border-gray-400 rounded-lg overflow-hidden"> <!-- Contenedor con contorno -->
+          <a href="./encuadres.html" target="_blank" class="course-card bg-white rounded-lg shadow-md overflow-hidden transition duration-500 ease-in-out transform hover:-translate-y-2 hover:scale-105 block">
+              <img src="./coursed.png" alt="Curso 1" class="w-full h-48 object-cover">
+              <div class="p-6">
+                  <h3 class="text-xl font-bold mb-2 text-gray-800">CURSOS</h3>
+                  <p class="text-gray-600">¡Da click aquí para ver los cursos! | Math Rocks</p>
+              </div>
+          </a>
+      </div>
+  </div>
+
+  <!-- Adornos -->
+  <div class="absolute bottom-0 left-0 w-full h-20 overflow-hidden z-0">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="text-blue-700">
+          <path fill="#f3f4f6" fill-opacity="1" d="M0,96L60,85.3C120,75,240,53,360,48C480,43,600,53,720,85.3C840,117,960,171,1080,186.7C1200,203,1320,181,1380,170.7L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+      </svg>
+  </div>
+</section>
+
+
+        <!-- Repite este contenedor para cada curso -->
+
+    </div>
+</section>
+
+<section id="galeria" class="py-24 relative">
+    <!-- Fondo atractivo con gradiente -->
+    <div class="absolute inset-0 bg-gradient-to-br from-purple-500 to-pink-500"></div>
+    <div class="container mx-auto relative z-10">
+
+<style>
+  .shadow__btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
+
+.shadow__btn {
+  background: rgb(0,140,255);
+  box-shadow: 0 0 25px rgb(0,140,255);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
+}
+</style>
+
+<button class="shadow__btn">
+  Galería Math Rocks Fest I
+</button>
+
+<br><br>
+
+<br><br>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+            <div class="border border-gray-400 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                <a href="./newgal.html" target="_blank" class="block">
+                    <img src="./galll.jpg" alt="Imagen de la galería" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-white">Galería Math Rocks FEST I</h3>
+                        <p class="text-gray-200">Haz clic aquí para ver las imágenes | Math Rocks</p>
+                    </div>
+                </a>
+            </div>
+            <div class="flex items-center">
+                <p class="text-lg text-white bg-gray-900 bg-opacity-50 p-4 rounded-lg">¿Quieres revivir aquél momento único durante el MATH ROCKS FEST I? Aquí esta la galería de ese día tan único en la historia de la divulgación en México!!!</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="galeria" class="py-24 relative">
+  <style>
+    .glowing-box {
+    background-color: rgba(255, 255, 255, 0.2); /* Color de fondo con transparencia */
+    border-radius: 20px; /* Borde redondeado */
+    box-shadow: 0 0 20px 5px rgba(252, 178, 178, 0.9); /* Sombra con brillo */
+    transition: transform 0.3s ease; /* Transición suave al hacer hover */
+}
+
+.glowing-box:hover {
+    transform: scale(1.05); /* Escalar ligeramente al hacer hover */
+}
+
+  </style>
+    <!-- Fondo animado con partículas -->
+    <div id="particles-js" class="absolute inset-0"></div>
+    <div class="bg-gradient-to-b from-blue-100 to-blue-200 absolute inset-0"></div>
+    <div class="container mx-auto relative z-10">
+      <style>
+        .shadow__btn {
+        padding: 10px 20px;
+        border: none;
+        font-size: 17px;
+        color: #fff;
+        border-radius: 7px;
+        letter-spacing: 4px;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: 0.5s;
+        transition-property: box-shadow;
+      }
+      
+      .shadow__btn {
+        background: rgb(0,140,255);
+        box-shadow: 0 0 25px rgb(0,140,255);
+      }
+      
+      .shadow__btn:hover {
+        box-shadow: 0 0 5px rgb(0,140,255),
+                    0 0 25px rgb(0,140,255),
+                    0 0 50px rgb(0,140,255),
+                    0 0 100px rgb(0,140,255);
+      }
+      </style>
+      
+      <button class="shadow__btn">
+        Galería Math Rocks Fest II
+      </button>
+      
+      <br><br>
+      
+      <br><br>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="flex items-center glowing-box">
+
+<style>
+@keyframes blinkCursor {
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+@keyframes typeAndDelete {
+  0%,
+  10% {
+    width: 0;
+  }
+  45%,
+  55% {
+    width: 6.2em;
+  } /* adjust width based on content */
+  90%,
+  100% {
+    width: 0;
+  }
+}
+
+.terminal-loader {
+  border: 0.1em solid #333;
+  background-color: #1a1a1a;
+  color: #0f0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1em;
+  padding: 1.5em 1em;
+  width: 50em;
+  margin: 100px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.terminal-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5em;
+  background-color: #333;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 0 0.4em;
+  box-sizing: border-box;
+}
+
+.terminal-controls {
+  float: right;
+}
+
+.control {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.4em;
+  border-radius: 50%;
+  background-color: #777;
+}
+
+.control.close {
+  background-color: #e33;
+}
+
+.control.minimize {
+  background-color: #ee0;
+}
+
+.control.maximize {
+  background-color: #0b0;
+}
+
+.terminal-title {
+  float: left;
+  line-height: 1.5em;
+  color: #eee;
+}
+
+.text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.2em solid green; /* Cursor */
+  animation: typeAndDelete 4s steps(11) infinite,
+    blinkCursor 0.5s step-end infinite alternate;
+  margin-top: 1.5em;
+}
+</style>
+
+<div class="terminal-loader">
+  <div class="terminal-header">
+    <div class="terminal-title">¿Quiénes irán al FEST II?</div>
+    <div class="terminal-controls">
+      <div class="control close"></div>
+      <div class="control minimize"></div>
+      <div class="control maximize"></div>
+    </div>
+  </div>
+  <div class="text">GALERIA II</div>
+</div>
+
+
+
+        </div>
+        
+            <div class="border border-gray-400 rounded-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                <a href="./mingo/Galeria/index.html" target="_blank" class="block">
+                    <img src="./invit.jpg" alt="Imagen de la galería" class="w-full h-64 object-cover rounded-t-lg">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2 text-black text-center">Galería de conferencistas Math Rocks FEST II</h3>
+                        <p class="text-xl font-bold mb-2 text-black text-center">Haz clic aquí para ver las imágenes | Math Rocks</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <style>
+      body {
+        font-family: 'Segoe Script', sans-serif;
+        background-color: #070707;
+      }
+      .frame {
+        max-width: 800px;
+        margin: 50px auto;
+        border: 1px solid #f7a4a4;
+        border-radius: 50px;
+        background-color: #f85454;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: glowing 4s infinite alternate;
+      }
+      .container {
+        padding: 20px;
+        text-align: center;
+      }
+      .event-info {
+        background-color: #fc9898;
+        border-radius: 50px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      #addToCalendar {
+        background-color: #4CAF50;
+        color: rgb(3, 3, 3);
+        padding: 15px 30px;
+        border: none;
+        border-radius: 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+  
+      @keyframes glowing {
+        0% {
+          box-shadow: 0 0 20px #f00;
+        }
+        100% {
+          box-shadow: 0 0 20px #f00, 0 0 40px #ff0000, 0 0 70px #ff0000;
+        }
+      }
+
+
+      
+    </style>
+  </head>
+  <body>
+  <div class="frame">
+    <div class="container">
+      <h1>𝙈𝙖𝙩𝙝 𝙍𝙤𝙘𝙠𝙨 𝙁𝙚𝙨𝙩 𝙄𝙄</h1>
+      <br></br>
+      <div class="event-info">
+        <p><strong>Fecha:</strong> 8 de junio de 2024</p>
+        <br></br>
+        <p><strong>Horario:</strong> 11:30 AM - 10:30 PM</p>
+        <br></br>
+        <p><strong>Lugar:</strong> 𝘊𝘦𝘯𝘵𝘳𝘰 𝘥𝘦 𝘤𝘰𝘯𝘷𝘦𝘯𝘤𝘪𝘰𝘯𝘦𝘴 𝘛𝘭𝘦𝘵𝘦𝘭𝘰𝘭𝘤𝘰, 𝘔𝘢𝘯𝘶𝘦𝘭 𝘎𝘰𝘯𝘻𝘢𝘭𝘦𝘻 171, 𝘚𝘢𝘯 𝘚𝘪𝘮ó𝘯 𝘛𝘰𝘭𝘯𝘢𝘩𝘶𝘢𝘤, 𝘊𝘶𝘢𝘶𝘩𝘵é𝘮𝘰𝘤, 06920 𝘊𝘪𝘶𝘥𝘢𝘥 𝘥𝘦 𝘔é𝘹𝘪𝘤𝘰, 𝘊𝘋𝘔𝘟</p>
+        <br></br>
+        <p><strong>Descripción:</strong> Ú𝕟𝕖𝕥𝕖 𝕒 𝕟𝕠𝕤𝕠𝕥𝕣𝕠𝕤 𝕖𝕟 𝕖𝕝 𝕄𝕒𝕥𝕙 ℝ𝕠𝕔𝕜𝕤 𝔽𝕖𝕤𝕥 𝕀𝕀, 𝕕𝕠𝕟𝕕𝕖 𝕔𝕠𝕟𝕧𝕖𝕣𝕘𝕖𝕟 𝕝𝕒𝕤 𝕞𝕖𝕟𝕥𝕖𝕤 𝕞á𝕤 𝕓𝕣𝕚𝕝𝕝𝕒𝕟𝕥𝕖𝕤 𝕕𝕖 𝕝𝕒 𝕕𝕚𝕧𝕦𝕝𝕘𝕒𝕔𝕚ó𝕟 𝕔𝕚𝕖𝕟𝕥í𝕗𝕚𝕔𝕒 𝕪 𝕝𝕠𝕤 𝕚𝕟𝕗𝕝𝕦𝕖𝕟𝕔𝕖𝕣𝕤 𝕞á𝕤 𝕕𝕖𝕤𝕥𝕒𝕔𝕒𝕕𝕠𝕤 𝕕𝕖 𝕐𝕠𝕦𝕋𝕦𝕓𝕖. ℙ𝕣𝕖𝕡á𝕣𝕒𝕥𝕖 𝕡𝕒𝕣𝕒 𝕤𝕦𝕞𝕖𝕣𝕘𝕚𝕣𝕥𝕖 𝕖𝕟 𝕦𝕟 𝕕í𝕒 𝕝𝕝𝕖𝕟𝕠 𝕕𝕖 𝕔𝕙𝕒𝕣𝕝𝕒𝕤 𝕔𝕒𝕦𝕥𝕚𝕧𝕒𝕕𝕠𝕣𝕒𝕤, 𝕗𝕒𝕤𝕔𝕚𝕟𝕒𝕟𝕥𝕖𝕤 𝕪 𝕦𝕟 𝕒𝕞𝕓𝕚𝕖𝕟𝕥𝕖 𝕒𝕞𝕖𝕟𝕠 𝕢𝕦𝕖 𝕥𝕖 𝕚𝕟𝕤𝕡𝕚𝕣𝕒𝕣á 𝕒 𝕕𝕖𝕤𝕔𝕦𝕓𝕣𝕚𝕣 𝕖𝕝 𝕡𝕠𝕕𝕖𝕣 𝕕𝕖 𝕝𝕒𝕤 𝕞𝕒𝕥𝕖𝕞á𝕥𝕚𝕔𝕒𝕤 𝕪 𝕝𝕒 𝕔𝕚𝕖𝕟𝕔𝕚𝕒. ¡ℕ𝕠 𝕥𝕖 𝕡𝕚𝕖𝕣𝕕𝕒𝕤 𝕝𝕒 𝕠𝕡𝕠𝕣𝕥𝕦𝕟𝕚𝕕𝕒𝕕 𝕕𝕖 𝕤𝕖𝕣 𝕡𝕒𝕣𝕥𝕖 𝕕𝕖 𝕖𝕤𝕥𝕖 𝕖𝕧𝕖𝕟𝕥𝕠 ú𝕟𝕚𝕔𝕠 𝕖𝕟 𝕤𝕦 𝕔𝕝𝕒𝕤𝕖!</p>
+      </div>
+      <a id="addToCalendar" href="javascript:void(0);" onclick="addToGoogleCalendar()">Agregar a Calendario</a>
+    </div>
+  </div>
+  
+  <script>
+    function addToGoogleCalendar() {
+      var event = {
+        'summary': 'Math Rocks Fest II',
+        'location': 'Por determinar',
+        'description': 'Únete a nosotros en el Math Rocks Fest II, donde convergen las mentes más brillantes de la divulgación científica y los influencers más destacados de YouTube. Prepárate para sumergirte en un día lleno de charlas cautivadoras, fascinantes y un ambiente ameno que te inspirará a descubrir el poder de las matemáticas y la ciencia. ¡No te pierdas la oportunidad de ser parte de este evento único en su clase!',
+        'start': {
+          'dateTime': '2024-06-08T10:00:00',
+          'timeZone': 'America/Mexico_City'
+        },
+        'end': {
+          'dateTime': '2024-06-08T18:00:00',
+          'timeZone': 'America/Mexico_City'
+        },
+        'reminders': {
+          'useDefault': false,
+          'overrides': [
+            {'method': 'email', 'minutes': 24 * 60},
+            {'method': 'popup', 'minutes': 10}
+          ]
+        }
+      };
+  
+      var url = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(event.summary) + '&dates=' + encodeURIComponent(event.start.dateTime) + '/' + encodeURIComponent(event.end.dateTime) + '&details=' + encodeURIComponent(event.description) + '&location=' + encodeURIComponent(event.location);
+  
+      window.open(url, '_blank');
+    }
+  </script>
+  
+  <script>
+    // JavaScript
+window.addEventListener("scroll", function() {
+    var navigationBar = document.getElementById("navigationBar");
+    if (window.scrollY > 50) { // Cambia 50 por el valor deseado de desplazamiento
+        navigationBar.classList.add("reduced");
+    } else {
+        navigationBar.classList.remove("reduced");
+    }
+});
+
+  </script>
+
+
+</body>
+
+      </div>
+    </section>
+
+    </footer>
+    <footer class="footer" style="background-color: #f8f9fa; padding: 20px; text-align: center;">
+        <p style="font-size: 18px; color: #007bff; font-weight: bold;">&copy; 2024 MathRocks. Todos los derechos reservados.</p>
+        <p style="font-size: 18px; color: #007bff; font-weight: bold;">Sitio ciberprotegido y asegurado por DMCA</p>
+        <p style="font-size: 18px; color: #007bff; font-weight: bold;">A.S.R.G - 2024</p>
+    </footer>
+              <style>
+                .footer {
+        border: 2px solid #007bff; /* Color azul fuerte */
+        border-radius: 10px; /* Bordes redondeados */
+        box-shadow: 0 0 50px #007bff; /* Brillo alrededor */
+    }
+                </style>
+   
+        <footer class="footer" style="background-color: #0f3057; padding: 50px 0; color: #fff; font-family: 'Luxia', sans-serif;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 style="font-size: 28px; font-weight: bold; margin-bottom: 30px;">Sobre Esta Página</h3>
+                    <p style="font-size: 18px; line-height: 1.6;">Bienvenido al canal oficial del canal oficial de MathRocks. Aquí encontrarás contenido de primer nivel sobre los eventos más relevantes y los cursos del canal. Únete a esta valiosa comunidad y mantente en linea conmigo.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="font-size: 28px; font-weight: bold; margin-bottom: 30px;">Redes Sociales:</h3>
+                    <ul class="social-links" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="display: inline-block; margin-right: 20px;"><a href="https://www.youtube.com/channel/UC4nxWt8WxXUmCXpjSLyYtKA/videos"><i class="fab fa-youtube" style="color: #ff0000; font-size: 32px;"></i></a></li>
+                        <li style="display: inline-block; margin-right: 20px;"><a href="https://twitter.com/mathrocksof"><i class="fab fa-twitter" style="color: #1da1f2; font-size: 32px;"></i></a></li>
+                        <li style="display: inline-block; margin-right: 20px;"><a href="https://www.facebook.com/TheMathRocks/"><i class="fab fa-facebook" style="color: #3b5998; font-size: 32px;"></i></a></li>
+                        <li style="display: inline-block; margin-right: 20px;"><a href="https://www.instagram.com/themathrocks/"><i class="fab fa-instagram" style="color: #e4405f; font-size: 32px;"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3 style="font-size: 28px; font-weight: bold; margin-bottom: 30px;">Contacto</h3>
+                    <p style="font-size: 18px; line-height: 1.6;">Para asuntos y consultas exclusivas, por favor contáctenos a través de mi correo electrónico oficial: <br> <adress><a href="mailto:mjcmfock@gmail.com">mjcmfock@gmail.com</a></adress> </p>
+                </div>
+    </footer>
+</body>
+</html>
+    <!-- <footer class="footer">
+    <p>&copy; 2024 Math Rocks. Todos los derechos reservados.</p>
+    <p>Desarrollado con ❤️ por <a href="mailto:samuelg100158@gmail.com">Tu Nombre</a></p>
+</footer> -->
