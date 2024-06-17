@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./Files/mainResponsive.css">
+  <link rel="icon" href="./quimilogo.png">
+  <title>Química IV</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden; /* Para evitar barras de desplazamiento horizontal */
+    }
+
+    /* Estilos para el video de fondo */
+    #video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* Para que esté detrás del contenido */
+      object-fit: cover;
+    }
+
+    /* Estilos para el contenedor del banner */
+    #banner-container {
+      position: relative;
+      width: 100%;
+      height: 500px; /* Altura ajustable según tus necesidades */
+      overflow: hidden; /* Para ocultar el desbordamiento de las imágenes */
+      margin-bottom: 50px; /* Espacio para la sección inferior */
+    }
+
+    /* Estilos para las imágenes dentro del banner */
+    .banner-img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: auto;
+      height: auto;
+      max-width: 100%; /* Máximo ancho del contenedor */
+      max-height: 100%; /* Máxima altura del contenedor */
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Estilos específicos para la banner-img activa */
+    .banner-img.active {
+      opacity: 0.7;
+    }
+
+    /* Estilos para el botón de desplazamiento */
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background-color: rgba(80, 5, 5, 0.9); /* Fondo semi-transparente */
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px; /* Tamaño del icono */
+      color: white; /* Color del icono */
+    }
+
+    /* Estilos específicos para la flecha izquierda */
+    .arrow.left {
+      left: 20px; /* Ajuste para que esté más a la izquierda */
+    }
+
+    /* Estilos específicos para la flecha derecha */
+    .arrow.right {
+      right: 20px; /* Ajuste para que esté más a la derecha */
+    }
+
+    .arrow:hover {
+      background-color: rgba(80, 5, 5, 0.9); /* Brillo al pasar el ratón */
+    }
+
+    /* Estilos para la sección inferior */
+    #lower-section {
+      background-color: #f0f0f0;
+      opacity: 0.8;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    /* Estilos para el contenido de la sección inferior */
+    #lower-section-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    #lower-section-content img {
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 20px;
+    }
+      /* Estilos para el resplandor del texto */
+      .glowing-text {
+      color: black;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Efecto de resplandor */
+    }
+  </style>
+</head>
+<body>
+  <!-- Video de fondo -->
+  <video autoplay muted loop id="video-background">
+    <source src="./eduardodeidad.mp4" type="video/mp4">
+    Tu navegador no soporta el elemento de video.
+  </video>
+
+
+  <style>
+    /* Contenedor del banner */
+    #banner-container {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Contenedor de las imágenes del banner */
+    #banner-images {
+        display: 50%;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Estilos de las imágenes del banner */
+    .banner-img {
+        max-width: 100%; /* Ajusta el tamaño máximo de las imágenes al 100% del contenedor */
+        height: 500px; /* Mantiene la proporción de la imagen */
+        flex-shrink: 0;
+        object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+    }
+
+    /* Clase activa para la imagen visible */
+    .banner-img.active {
+        display: block;
+    }
+</style>
+</head>
+<body>
+<!-- Contenedor del banner deslizable -->
+<div id="banner-container">
+    <!-- Imágenes del banner -->
+    <div id="banner-images">
+        <img class="banner-img active" src="./profes/v3.svg" alt="Imagen padre">
+        <img class="banner-img" src="./profes/eduardeidad.jpg" alt="Imagen 1">
+        <img class="banner-img" src="./profes/1.jpg" alt="Imagen 2">
+        <img class="banner-img" src="./profes/boinas.jpg" alt="Imagen 3">
+        <!-- Agrega más imágenes según sea necesario -->
+    </div>
+</div>
+
+    <!-- Flecha izquierda -->
+    <div class="arrow left" onclick="scrollBanner(-1)">&#10094;</div>
+    <!-- Flecha derecha -->
+    <div class="arrow right" onclick="scrollBanner(1)">&#10095;</div>
+  </div>
+
+  <!-- Sección inferior -->
+<section id="lower-section">
+  <div id="lower-section-content">
+    <!-- Contenido para la sección inferior -->
+    <h2 style="font-style: italic; color: #333; font-size: 50px;">Temario Química IV</h2>
+    <p style="font-style: italic; color: #666; font-size: 35px;">Consulta el temario aquí!</p>
+    <img src="./temario.png" alt="Tu imagen" style="width: 500px; height: 500px; border-radius: 5%;">
+    <p style="font-style: italic; color: #777; line-height: 1.6; font-size: 30px;">Objetivo de la Unidad de Aprendizaje:<br>Realizar experiencias de laboratorio que permitan fomentar en el
+      alumno una actitud de colaboración, observadora, interrogante,
+      analítica y crítica, en su formación, capacitación, e interés al analizar
+      su entorno con vivencias personales que deben tener un soporte
+      teórico, para llegar a una explicación del fenómeno, al ser la química
+      una ciencia experimental y tecnología.
+      <br><a href="https://www.youtube.com/watch?v=PMY7xeIFogU" style="text-decoration: none; color: #007bff;">Consulta el sig. vídeo</a>!</p></br>
+    <section id="sectionnew">
+      <h2 style="font-size: 50px;">Competencias</h2>
+      <div class="sectionnew2">
+         <!-- Estoy cansado jefe -->
+<div class="sectionnew3" style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+    <img src="./competencias.png" alt="Tu imagen" style="width: 500px; height: 500px; border-radius: 4%;">
+  </a>
+  <h2 style="font-style: italic; color: #3e3f3d; font-size: 30px;">Tabla periódica (a estas alturas ya deberías de saberla...)</h2>
+  <img src="./tabla_per.png" alt="Tu imagen" style="width: 500px; height: 500px; border-radius: 4%;">
+           
+            <h2 style="font-style: italic; color: #333; font-size: 50px;">- Guía completa actualizada (yo ya no la descargo pq ya la tengo) DA CLICK A LA IMÁGEN -</h2>
+            <a href="https://www.ipn.mx/assets/files/des/docs/ALUMNOS/Temarios/ICFM/Temario_IyCFM_Quimica.pdf">
+              <img src="./academychems.png" alt="Tu imagen" style="width: 500px; height: 500px; border-radius: 10%;">
+          </a>
+            <br></br>
+
+              <h2 style="font-style: italic; color: #333; font-size: 50px;">- UBICACIÓN -</h2>
+              <!-- Después de la imagen "rulement" -->
+              <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.108269591069!2d-99.0192441!3d19.5707411!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1f02f26af3137%3A0xe677294103786cf5!2sCentro%20de%20Estudios%20Cient%C3%ADficos%20y%20Tecnol%C3%B3gicos%20N%C2%B0%203%20%E2%80%9CEstanislao%20Ram%C3%ADrez%20Ruiz%E2%80%9D%20IPN!5e0!3m2!1ses!2smx!4v1686938045654!5m2!1ses!2smx" 
+              width="600" 
+              height="450" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          
+    <style>
+      body {
+        font-family: 'Segoe Script', sans-serif;
+        background-color: #f8f8f8;
+      }
+      .frame {
+        max-width: 800px;
+        margin: 50px auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        animation: glowing 4s infinite alternate;
+      }
+      .container {
+        padding: 20px;
+        text-align: center;
+      }
+      .event-info {
+        background-color: #f2f2f2;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+      }
+      #addToCalendar {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+  
+      @keyframes glowing {
+        0% {
+          box-shadow: 0 0 20px #f00;
+        }
+        100% {
+          box-shadow: 0 0 20px #f00, 0 0 40px #ff0000, 0 0 60px #ff0000;
+        }
+      }
+    </style>
+  </head>
+  <body>
+  <div class="frame">
+    <div class="container">
+      <h1>Academia de química T.V</h1>
+      <div class="event-info">
+        <p><strong>Director del plantel:</strong> José Diego Rubén Águila Chávez</p>   <!-- YA DESPIDANLO!!! -->
+        <p><strong>Presidenta de academia:</strong> Marina Hernández Muñoz</p>   <!-- Mi abue:) -->
+        <p><strong>Ubicación en el plantel:</strong> Edificio de computación (Doble L), último piso del lado del mural del "Cuervo"</p>
+         <p><strong>Descripción:</strong> Aprende a cocinar meta como Jesse Pinkman, digo, aprende de química IV que ni la tabla periódica sabes!</p>
+      </div>
+
+</body>
+          </form>
+  </div>
+</section>
+
+  <!-- Scripts al final del body -->
+  <script>
+    // Función para desplazar el banner
+    let currentImageIndex = 0;
+    const images = document.querySelectorAll('.banner-img');
+    const numImages = images.length;
+    let intervalId;
+
+    function scrollBanner(direction) {
+      clearInterval(intervalId); // Limpiar el intervalo para evitar conflictos
+      currentImageIndex = (currentImageIndex + direction + numImages) % numImages;
+      showImage(currentImageIndex);
+    }
+
+    // Función para mostrar la imagen actual
+    function showImage(index) {
+      images.forEach((img, idx) => {
+        if (idx === index) {
+          img.classList.add('active');
+        } else {
+          img.classList.remove('active');
+        }
+      });
+      startAutoScroll(); // Iniciar el desplazamiento automático después de mostrar la imagen
+    }
+
+    // Función para iniciar el desplazamiento automático
+    function startAutoScroll() {
+      intervalId = setInterval(() => {
+        currentImageIndex = (currentImageIndex + 1) % numImages;
+        showImage(currentImageIndex);
+      }, 30000); // Cambia aquí el tiempo de espera entre imágenes en milisegundos (3 segundos)
+    }
+
+    // Iniciar desplazamiento automático al cargar la página
+    startAutoScroll();
+  </script>
+</body>
+</html>
